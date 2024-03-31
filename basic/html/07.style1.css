@@ -1,0 +1,19 @@
+/* selector */
+body {
+    font-family: "viewport";
+}
+
+/* class selector */
+.main {
+    color: rgb(82, 183, 183);
+}
+.sub {
+    color: rgb(97, 147, 104);
+}
+
+/* id selector */
+#useless {
+    color: rgb(182, 156, 116);
+    font-weight: bold;
+    font-size: 30px;
+}

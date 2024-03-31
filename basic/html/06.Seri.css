@@ -1,0 +1,19 @@
+body{
+    font-family: "viewport";
+}
+
+.Male{
+    color:antiquewhite
+}
+
+.Female{
+    color:antiquewhite
+}
+
+ul{
+    list-style: none;
+}
+
+#CEO{
+    background-color: antiquewhite;
+}

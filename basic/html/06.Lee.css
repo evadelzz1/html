@@ -1,0 +1,15 @@
+body{
+    font-family: "viewport";
+}
+
+ul{
+    list-style: none;
+}
+
+.Male{
+    background-color:antiquewhite
+}
+
+.Female{
+    background-color: antiquewhite;
+}
