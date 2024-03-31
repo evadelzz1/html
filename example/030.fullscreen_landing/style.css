@@ -13,8 +13,7 @@ a{
 }
 
 #main{
-    background:
-    url("https://pixabay.com/get/g0b35dbf916766bd9b5341ccd31172051d1b30c95c7fbd0167cbb58a9bf2819e3aaa2de73c8cbd2ed8afa64957a82ae562f21cf221d3c5f0f569063364df24651_1920.jpg") no-repeat;
+    background: url("./Imgur.jpg") no-repeat;
     background-size: cover;
     background-position: center center;
     width: 100vw;
@@ -34,12 +33,12 @@ a{
 #contents h1{
     font-family: 'Dancing Script', cursive;
     font-size: 70px;
-    margin: 16px;
+    margin-bottom: 16px;
 }
 
 #contents p{
     font-size: 23px;
-    margin: 16px;
+    margin-bottom: 16px;
 }
 
 #contents a{
