@@ -13,7 +13,8 @@ a{
 }
 
 #main{
-    background: url("./Imgur.jpg") no-repeat;
+    background: url("https://i.imgur.com/XWXZpgV.jpeg") no-repeat;
+    // background: url("./Imgur.jpg") no-repeat;
     background-size: cover;
     background-position: center center;
     width: 100vw;
@@ -52,7 +53,7 @@ a{
 }
 
 #contents a:hover{
-    background-color: red;
+    background-color: orange;
 }
 
 @media(max-width:769px){

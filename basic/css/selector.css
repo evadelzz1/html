@@ -1,0 +1,27 @@
+body {
+    font-family: "Nanum Gothic"
+}
+.main {
+    color: red;
+}
+
+.sub {
+    color: blue;
+}
+#useless {
+    color: brown;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+ol li {
+    font-style: italic;
+}
+
+li.key {
+    color: blueviolet
+}
+
+li:hover {
+    background-color: aqua;
+}
