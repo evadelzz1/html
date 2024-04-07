@@ -6,106 +6,324 @@
 
 
 // ========================================================
-name = "Mike";
-age = 30;
-// alert(age);
-console.log(age);
+var name = "Mike";
+console.log(name);
+
+var name = "Jane";
+console.log(name);
 
 
-// ========================================================
 let name = "Mike";
+console.log(name);
 
-// 1000 lines...
+let name = "Jane";
+console.log(name);  // Uncaught SyntaxError: Identifier 'name' has already been declared
 
-// let name = "google";
 
-let grade = "F";
+console.log(name1);
+var name1 = "Jane";
 
-grade = "A+";
+var name2;
+console.log(name2);
+name2 = "Jane";
 
-const PI = 3.14;
-const SPEED_LIMIT = 100;
-const BIRTH_DAY = "2024-03-01";
+console.log(name3);  // Uncaught ReferenceError: Cannot access 'name3' before initialization
+let name3 = "Jane";
+
+
+// Temporal Dead Zone
+
+let age = 30;
+function showAge() {
+    console.log(age);
+}
+showAge();
+
+
+let age = 30;
+function showAge() {
+    console.log(age);
+    let age = 20;   // Uncaught ReferenceError: Cannot access 'age' before initialization 
+}
+showAge();
+
+
+변수의 생성단계
+1.선언
+2.초기화
+3.할당
+
+let name;
+name = 'Mike';
+
+var age;
+age = 30;
+
+const gender = 'male';
+
+// const gender;
+// gender = 'male';  // Uncaught SyntaxError: Missing initializer in const declaration 
+
+
+
+var        : function-scoped
+let, const : block-scoped
+
+- code block : 함수, if문, for문, while문, try/catch문 등
 
 
 // ========================================================
-// 문자형 (string)
-const name = "Mike";
-const age = 30;
+// 생성자 함수
 
-const name1 = "Mike";
-const name2 = "Mike";
-const name3 = "Mike";
+// 객체 리터럴
+let user = {
+    name: 'Mike',
+    age: 30
+}
 
-const message = "I'm a boy";
-const message2 = 'I\'m a boy';
-console.log(message + " : " + message2);
-
-const message3 = `My Name is ${name}`;
-console.log(message3);
-
-const message4 = `I am ${30+1} years old`;
-console.log(message4);
-
-// 숫자형 (Number)
-const age = 30;
-const PI = 3.14;
-
-console.log(1 + 2);
-console.log(10 - 3);
-console.log(3 * 2 / 3);
-console.log(6 % 5);     // 나머지
-
-
-const x = 1/0;  // Infinity
-console.log(x);
-
-const name = "Mike";
-const y = name/2;   // NaN (Not a Number)
-console.log(y);
-
-// Boolean
-const a = true;
-const b = false;
-
-const name = "Mike";
-const age = 30; 
-
-console.log(name == 'Mike');
-console.log(age > 40);
-
-// null & undefined
-let age;
-console.log(age);
-
-let user = null;
 console.log(user);
 
-// typeof 연산자
-const name = "Mike";
-console.log(typeof 3);
-console.log(typeof name);
-console.log(typeof true);
-console.log(typeof "xxx");
-console.log(typeof null);
-console.log(typeof undefined);
+
+// 생성자 함수
+function User(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+let user1 = new User('Mike', 30);
+let user2 = new User('Jane', 22);
+let user3 = new User('Tom', 17);
+
+console.log(user1);
+console.log(user2);
+console.log(user3);
+
+
+// 생성자 함수 내부로직
+function User(name, age) {
+    this = {}
+
+    this.name = name;
+    this.age = age;
+
+    return this;
+}
+
+new 함수명();
+
+
+
+function User(name, age) {
+    this.name = name;
+    this.age = age;
+    this.sayName = function() {
+        console.log(this.name);
+    }
+}
+
+let user5 = new User('Han', 40);
+user5.sayName();
+
+
+function Item(title, price) {
+    // this = {};
+
+    this.title = title;
+    this.price = price;
+
+    this.showPrice = function() {
+        console.log(this.price);
+    }
+
+    // return this;
+}
+
+const item1 = new Item('인형', 3000);
+const item2 = new Item('가방', 5000);
+const item3 = new Item('지갑', 9000);
+
+console.log(item1, item2, item3);
+
+item3.showPrice();
 
 
 // ========================================================
-const name = "Mike";
+// Object - methods / Computed property
+// 10:41
 
-const message = `My Name is ${name}`;
-console.log(message);
+// Computed property
 
-const message2 = "My Name is ${name}";
-console.log(message2);
+let a = 'age';
 
-const a = "나는 ";
-const b = " 입니다.";
-console.log(a + name + b);
+const user = {
+    name: 'Mike',
+    age: 30
+}
 
-const age = 30; 
-console.log(a + age + "살" + b);
+console.log(user);
+
+
+
+let b = 'age';
+
+const user2 = {
+    name: 'Mike',
+    [b]: 30   // age: 30
+}
+
+console.log(user2);
+
+
+const user = {
+    [1 + 4] : 5,
+    ["안녕" + "하세요"]: "Hello"
+}
+
+console.log(user);
+
+
+methods
+- Object.assign()
+- Object.keys()
+- Object.values()
+- Object.entries()
+- Object.fromEntries()
+
+
+
+// Object.assign() : 객체 복제
+
+const user = {
+    name: 'Mike',
+    age: 30
+}
+
+const cloneUser = user; // 복제가 아닌 레퍼런스 주소를 할당함. 즉 user = cloneUser 임
+
+console.log(user.name + " : " + cloneUser.name);
+
+cloneUser.name = 'scott';
+console.log(user.name + " : " + cloneUser.name);
+
+
+//
+const newUser = Object.assign({}, user);
+console.log(user.name + " : " + newUser.name);
+
+newUser.name = 'Tom';
+console.log(user.name + " : " + newUser.name);
+
+// 즉, newUser != user 임
+
+
+const newProperty = Object.assign({gender: 'male'}, user);
+console.log(newProperty);
+
+
+const newProperty2 = Object.assign({name: 'Tiger'}, user);
+console.log(newProperty2);
+
+
+const user10 = {
+  name: 'Mike'
+}
+const info1 = {
+  age: 30
+}
+const info2 = {
+  gender: 'male'
+}
+
+const newMerge = Object.assign(user10, info1, info2);
+console.log(newMerge);
+
+
+
+// Object.keys() : 키 배열 반환
+// Object.values()
+// Object.entries()
+// Object.fromEntries()
+
+const user11 = {
+  name: "Mike",
+  age: 30,
+  gender: "male"
+}
+
+const newKeys = Object.keys(user11);
+console.log(newKeys);  // ["name","age","gender"]
+
+
+const newVales = Object.values(user11);
+console.log(newVales);  // ["Mike",30,"male"]
+
+
+console.log(Object.entries(user11));
+
+
+const arr = [
+  ["name","Scott"],
+  ["age",25],
+  ["gender","female"]
+];
+console.log(Object.fromEntries(arr));
+
+
+
+let n = "name";
+let a = "age";
+
+const user20 = {
+    [n]: "Mike",
+    [a]: 30,
+    [1+4]: 10,
+};
+console.log(user20);
+
+
+
+function makeObj(key, val) {
+    return {
+        [key]: val,
+    };
+}
+
+const obj = makeObj("나이", 33);
+console.log(obj);
+
+
+
+
+const user22 = {
+    name: 'Mike',
+    age: 30
+}
+
+const user23 = Object.assign({}, user22);
+user23.name = 'Tom';
+
+console.log(user22.name);
+console.log(user23.name);
+
+console.log(Object.keys(user22));
+console.log(Object.values(user22));
+console.log(Object.entries(user22));
+
+let arr2 = [
+    ['mon', '월'],
+    ['tue', '화'],
+];
+const result = Object.fromEntries(arr2);
+console.log(result);
+
+
+
+// ========================================================
+// Symbol
+// 19:17
+
+
+
 
 
 // ========================================================
