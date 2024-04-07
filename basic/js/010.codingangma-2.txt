@@ -1,0 +1,830 @@
+// ========================================================
+// [코딩앙마] 자바스크립트 중급 강좌 : 140분 완성
+// youtube : https://youtu.be/4_WLS9Lj6n4?si=Iyai7L_Oa4xWeQeG&t=1
+//           https://www.youtube.com/watch?v=ocGc-AmWSnQ&list=PLZKTXPmaJk8JZ2NAC538UzhY_UNqMdZB4
+// https://codepen.io/
+
+
+// ========================================================
+name = "Mike";
+age = 30;
+// alert(age);
+console.log(age);
+
+
+// ========================================================
+let name = "Mike";
+
+// 1000 lines...
+
+// let name = "google";
+
+let grade = "F";
+
+grade = "A+";
+
+const PI = 3.14;
+const SPEED_LIMIT = 100;
+const BIRTH_DAY = "2024-03-01";
+
+
+// ========================================================
+// 문자형 (string)
+const name = "Mike";
+const age = 30;
+
+const name1 = "Mike";
+const name2 = "Mike";
+const name3 = "Mike";
+
+const message = "I'm a boy";
+const message2 = 'I\'m a boy';
+console.log(message + " : " + message2);
+
+const message3 = `My Name is ${name}`;
+console.log(message3);
+
+const message4 = `I am ${30+1} years old`;
+console.log(message4);
+
+// 숫자형 (Number)
+const age = 30;
+const PI = 3.14;
+
+console.log(1 + 2);
+console.log(10 - 3);
+console.log(3 * 2 / 3);
+console.log(6 % 5);     // 나머지
+
+
+const x = 1/0;  // Infinity
+console.log(x);
+
+const name = "Mike";
+const y = name/2;   // NaN (Not a Number)
+console.log(y);
+
+// Boolean
+const a = true;
+const b = false;
+
+const name = "Mike";
+const age = 30; 
+
+console.log(name == 'Mike');
+console.log(age > 40);
+
+// null & undefined
+let age;
+console.log(age);
+
+let user = null;
+console.log(user);
+
+// typeof 연산자
+const name = "Mike";
+console.log(typeof 3);
+console.log(typeof name);
+console.log(typeof true);
+console.log(typeof "xxx");
+console.log(typeof null);
+console.log(typeof undefined);
+
+
+// ========================================================
+const name = "Mike";
+
+const message = `My Name is ${name}`;
+console.log(message);
+
+const message2 = "My Name is ${name}";
+console.log(message2);
+
+const a = "나는 ";
+const b = " 입니다.";
+console.log(a + name + b);
+
+const age = 30; 
+console.log(a + age + "살" + b);
+
+
+// ========================================================
+// alert / prompt / confirm
+
+const name = prompt("Input a name :");
+console.log(name);
+
+alert("Welcome to " + name);
+alert(`Welcome to ${name}. Enjoy`);
+
+const name = prompt("Input a name :", "Scott");
+console.log(name);
+
+
+const isAdult = confirm("Are you a adult?");
+console.log(isAdult);
+
+
+// ========================================================
+// String(), Number(), Boolean()
+
+const mathScore = 90;
+const engScore = 80;
+
+const result = (mathScore + engScore) / 2;
+console.log(result);    // 정상적인 결과 : 85
+
+
+const mathScore = prompt("수학은 몇 점 입니까?");   // prompt() 의 결과는 문자형임
+const engScore = prompt("영어는 몇 점 입니까?");
+
+let result = (mathScore + engScore) / 2;
+console.log(result);       // 잘못된 값 노출
+
+const mathScore2 = Number(mathScore);
+const engScore2 = Number(engScore);
+
+let result2 = (mathScore2 + engScore2) / 2;
+console.log(result2);
+
+
+
+console.log(
+  String(3),
+  String(true),
+  String(false),
+  String(null),
+  String(undefined)
+);  // "3" "true" "false" "null" "undefined"
+
+console.log(
+  Number(3),
+  Number(true),
+  Number(false),
+  Number(null),     // -> 0
+  Number(undefined) // -> NaN
+);  // 3 1 0 0 NaN
+
+console.log(
+  Boolean(0),
+  Boolean(""),
+  Boolean(null),
+  Boolean(undefined),
+  Boolean(NaN)
+);  // false false false false false
+
+
+console.log(
+  Number(null),         // 0
+  Number(undefined),    // NaN
+  Number(0),            // false
+  Number('0'),          // true
+  Number(''),           // false
+  Number(' ')           // true
+);  // 0 NaN 0 0 0 0
+
+
+
+// ========================================================
+
+let num = 10;
+num = num + 5;
+console.log(num);   // 15
+
+num += 10;
+console.log(num);   // 25
+
+num *= 10;
+console.log(num);   // 250
+
+num /= 5;
+console.log(num);   // 50
+
+num %= 3;
+console.log(num);   // 2
+
+
+let num = 10;
+
+num++;
+console.log(num);
+
+num--;
+console.log(num);
+
+
+let num = 10;
+let result = num++;
+console.log(result);
+
+num = 10;
+result = ++num;
+console.log(result);
+
+
+// ========================================================
+console.log(10 > 5);
+console.log(10 == 5);
+console.log(10 != 5);
+
+// == (동등 연산자 오류 조심), === (일치연산자 = 동등연산자 + 타입검사)
+const a = 1;
+const b = "1";
+
+console.log(a == b);    // true
+console.log(a === b);   // false
+
+
+// ========================================================
+// 조건 연산자
+
+let age = prompt("당신의 나이는 몇 살 입니까? (10~30)");
+age = Number(age);
+
+if (age > 19) {
+    console.log("welcome");
+} else if (age === 19) {
+    console.log("fighting");
+} else {
+    console.log("good bye");
+}
+
+
+// 논리 연산자
+
+const name = "Mike";
+const age = 30;
+
+if (name === 'Tome' || age > 19) {
+    console.log("Pass");
+} else {
+    console.log("Not pass");
+}
+
+if (name === 'Mike' && age > 19) {
+    console.log("Pass");
+} else {
+    console.log("Not pass");
+}
+
+let age = prompt("당신의 나이는 몇 살 입니까? (10~30)");
+age = Number(age);
+let isAge = age > 19;
+
+if (!isAge) {
+    console.log("Not pass");
+} else {
+    console.log("Pass");
+}
+
+// 우선순위 
+
+const gender = "F";
+const name = "Jane";
+const isAdult = true;
+
+if (gender === 'M' && name === 'Mike' || isAdult) {
+    console.log("Pass");
+} else {
+    console.log("Not pass");
+}
+
+if ((gender === 'M' && name === 'Mike') || isAdult) {
+    console.log("Pass");
+} else {
+    console.log("Not pass");
+}
+
+
+// ========================================================
+// 반복문
+
+for (let i = 0; i < 10; i++) {
+    console.log(i);
+}
+
+
+let i = 0;
+while (i < 10) {
+    console.log(i);
+    i++;
+}
+
+
+let i = 0;
+do {
+    console.log(i);
+    i++;
+} while (i < 10)
+
+
+// break
+while(true) {
+    let answer = confirm("계속 할까요?");
+    if (!answer) {
+        break;
+    }
+}
+
+// continue
+for (let i = 0; i < 10; i++) {
+    if (i % 2) {
+        continue;
+    }
+    console.log(i);
+}
+
+
+// ========================================================
+// switch
+
+// 사과 : 100원
+// 키위 : 200원
+// 멜론 : 300원
+// 감귤 : 300원
+// 수박 : 500원
+// 그외 : 판매하지 않음
+
+let fruit = prompt("무슨 과일을 사고 싶나요?");
+
+switch(fruit) {
+    case '사과':
+        console.log("100원 입니다.");
+        break;
+    case '키위':
+        console.log("200원 입니다.");
+        break;
+    case '감귤':
+        console.log("300원 입니다.");
+    case '멜론':
+        console.log("300원 입니다.");
+        break;
+    case '수박':
+        console.log("500원 입니다.");
+        break;
+    default :
+        console.log("그런 과일은 판매하지 않습니다.");
+}
+
+
+
+let fruit = prompt("무슨 과일을 사고 싶나요?");
+
+switch(fruit) {
+    case '사과':
+        console.log("100원 입니다.");
+        break;
+    case '키위':
+        console.log("200원 입니다.");
+        break;
+    case '감귤':
+    case '멜론':
+        console.log("300원 입니다.");
+        break;
+    case '수박':
+        console.log("500원 입니다.");
+        break;
+    default :
+        console.log("그런 과일은 판매하지 않습니다.");
+}
+
+// ========================================================
+// 함수
+
+function sayHello(name) {
+    console.log(`Hello, ${name}`);
+}
+
+sayHello('Mike');
+
+
+function showError() {
+    console.log('Error!');
+}
+
+showError();
+
+
+function sayHello(name) {
+    const msg = `Hello, ${name}`;
+    console.log(msg);
+}
+
+sayHello('Mike');
+sayHello('Tom');
+sayHello('Jane');
+
+sayHello();     // "Hello, undefined"
+
+
+function sayHello2(name) {
+    let msg = "Hello";
+    if(name) {
+        msg = `Hello, ${name}`;
+    }
+    console.log(msg);
+}
+
+sayHello2();     // "Hello"
+sayHello2('Mike');
+
+function sayHello3(name) {
+    let msg = "Hello";
+    if(name) {
+        msg += ", " + name;
+    }
+    console.log(msg);
+}
+
+sayHello3();     // "Hello"
+sayHello3('Mike');
+
+
+// 전역변수 / 지역변수
+
+let msg = "welcome";
+console.log(msg);
+
+function sayHello(name) {
+    let msg = "Hello";
+    console.log(msg + ' ' + name);
+}
+
+sayHello('Mike');
+console.log(msg);
+
+
+
+let name = 'Mike';
+
+function sayHello(name) {
+    console.log(name);
+}
+
+sayHello();         // undefined
+sayHello('Jane');   // Jane
+
+
+
+function sayHello(name) {
+    let newName = name || 'friend'; // OR
+    let msg = `Hello, ${newName}`;
+    console.log(msg);
+}
+
+sayHello();         // Hello, friend
+sayHello('Mike');   // Hello, Mike
+
+
+
+function sayHello(name = 'friend') {
+    let msg = `Hello, ${name}`;
+    console.log(msg);
+}
+
+sayHello();         // Hello, friend
+sayHello('Mike');   // Hello, Mike
+
+// return
+
+function add(num1, num2) {
+    return num1 + num2;
+}
+
+const result = add(2, 3);
+console.log(result);
+
+
+
+function showError() {
+    console.log('Error!');
+}
+const result = showError();
+console.log(result);    // undefined
+
+
+function showError2() {
+    console.log('Error!');
+    return;
+}
+const result = showError2();
+console.log(result);    // undefined
+
+
+// ========================================================
+// 함수 선언문 vs 함수 표현식 vs 화살표 함수
+
+// 함수 선언문 : 어디서든 호출가능
+function sayHello() {
+    console.log('Hello');
+}
+sayHello();
+
+
+// 함수 표현식 : 코드에 도달하면 생성
+let sayHello = function() {
+    console.log('Hello');
+}
+sayHello();
+
+
+
+function add(num1, num2) {
+    return num1 + num2; 
+}
+console.log( add(1, 1) );
+
+let add2 = function(num1, num2) {
+    return num1 + num2; 
+}
+console.log( add2(1, 2) );
+
+// 화살표 함수
+let add3 = (num1, num2) => {
+    return num1 + num2; 
+}
+console.log( add3(1, 3) );
+
+let add4 = (num1, num2) => (
+    num1 + num2
+)
+console.log( add4(1, 4) );
+
+let add5 = (num1, num2) => num1 + num2;
+console.log( add5(1, 5) );
+
+let sayHello = name => `Hello, ${name}`;
+sayHello('Scott');
+
+
+let showError = () => {
+    console.log('error');
+}
+showError();
+
+let add6 = (num1, num2) => (
+    const result = num1 + num2;
+    return result;
+)
+console.log( add6(1, 6) );
+
+
+// ========================================================
+// Object
+
+const superman = {
+    name: 'clark',
+    age: 33,
+}
+
+// 접근
+console.log(superman.name);
+console.log(superman['age']);
+
+// 추가
+superman.gender = 'male';
+superman['hairColor'] = 'blue';
+
+console.log(superman.gender);
+console.log(superman.hairColor);
+console.log(superman['hairColor']);
+
+// 삭제
+delete superman.hairColor;
+console.log(superman.hairColor);    // undefined
+
+
+
+// 단축 프로퍼티
+
+const name = 'clerk';
+const age = 33;
+
+const superman = {
+    name: name,
+    age: age,
+    gender: 'male',
+}
+
+=>
+
+const name = 'clerk';
+const age = 33;
+
+const superman = {
+    name,
+    age,
+    gender: 'male',
+}
+
+
+// for .. in 반복문
+
+const superman = {
+    name: 'clark',
+    age: 30,
+}
+
+console.log(superman);
+
+console.log(superman.name);
+console.log(superman['age']);
+
+superman.hobby = 'baseball';
+console.log(superman);
+
+for (let key in superman) {
+    console.log("[" + key + "]");
+    console.log(superman[key]);
+}
+
+
+
+function makeObject(name, age) {
+    return {
+        name: name,
+        age: age,
+        hobby: 'football',
+    }
+}
+
+const Mike = makeObject('Mike', 25);
+console.log(Mike);
+
+
+function makeObject2(name, age) {
+    return {
+        name,
+        age,
+        hobby: 'football',
+    }
+}
+
+const Mike = makeObject2('Mike', 25);
+console.log(Mike);
+
+// 객체 in
+console.log('age' in Mike);         // true
+console.log('birthday' in Mike);    // false
+
+
+
+
+function isAdult(user) {
+    if (!('age' in user) || user.age < 20) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+const Mike = {
+    name: 'Mike',
+    age: 30
+}
+
+const Jane = {
+    name: 'Jane'
+}
+
+console.log(isAdult(Mike));
+console.log(isAdult(Jane));
+
+
+
+const Mike = {
+    name: 'Mike',
+    age: 30
+}
+
+for (let x in Mike) {
+    console.log("[" + x + "]");
+}
+
+
+
+// ========================================================
+// Object
+
+const superman = {
+    name: 'clark',
+    age: 33,
+    fly: function() {
+        console.log("날아갑니다.")
+    },
+    fly2() {
+        console.log("날아갑니다.!!")
+    },
+}
+
+superman.fly();
+superman.fly2();
+
+
+
+const user = {
+    name: 'Mike',
+    sayHello: function() {
+        console.log(`Hello, I am ${this.name}`);
+    },
+    sayHello2: function() {
+        console.log(`Hello, I am ${user.name}`);
+    },
+}
+
+console.log(user);
+user.sayHello();
+user.sayHello2();
+
+
+
+// 객체명 vs THIS
+
+let boy = {
+    name: "Mike",
+    showName: function() {
+        console.log(boy.name)
+    }
+};
+
+let man = boy;
+man.name = "Tom";
+
+console.log(boy.name);
+
+man.showName();
+
+boy = null;
+
+man.showName();     // Cannot read properties of null (reading 'name') 
+
+
+
+let boy2 = {
+    name: "Mike",
+    showName: function() {
+        console.log(this.name)
+    }
+};
+
+let man = boy2;
+man.name = "Tom";
+
+console.log(boy2.name);
+
+man.showName();
+
+boy2 = null;
+
+man.showName();     // Tom
+
+
+
+
+let boy3 = {
+    name: "Mike",
+    sayThis: function () {
+        console.log(this);
+    },
+    showName: function() {
+        console.log(this.name)
+    }
+};
+
+boy3.sayThis();
+
+
+
+// ========================================================
+// Array
+
+let students = ['철수', '영희', '영수'];
+console.log(students[0]);
+
+console.log(students.length);
+
+students[0] = '민정';
+console.log(students[0]);
+
+
+let days = ['월', '화', '수', '목', '금', '토'];
+console.log(days);
+console.log(days.length);
+
+days.push('일');
+days.push('년');
+console.log(days);
+console.log(days.length);
+
+days.pop('년');
+console.log(days);
+console.log(days.length);
+
+for (let idx = 0; idx < days.length; idx++) {
+    console.log("[1]" + days[idx]);
+}
+
+// for ... of ...
+for (let day of days) {
+    console.log("[2]" +day);
+}
