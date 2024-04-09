@@ -1215,506 +1215,1256 @@ console.log(user42);
 // 클로저 (Closure)
 // 01:18:39
 
+// 어휘적 환경 (Lexical Environment)
+
+// 어휘적 환경 (Lexical Environment)
+
+let one;
+one = 1;
+
+function addOne(num) {
+  console.log(one + num);
+}
+
+addOne(5);  // 6
 
 
+function makeAddr(x) {
+  return function(y) {
+    return x + y;
+  }
+};
 
+const add3 = makeAddr(3); // 6
+console.log(add3(2)); // 5
 
+const add10 = makeAddr(10);
+console.log(add10(5)); // 15
+console.log(add3(1)); // 4
 
+// closure
+// 함수와 lexical 환경의 조합
+// 함수가 생성될 당시의 외부 변수를 기억
+// 생성 이후에도 계속 접근 가능
 
+function makeCounter() {
+  let num = 0;  // 은닉화
+  
+  return function() {
+    return num++;
+  };
+}
 
+let counter = makeCounter();
+
+console.log(counter()); // 0
+console.log(counter()); // 1
+console.log(counter()); // 2
 
 
 
 // ========================================================
-// switch
+// setTimeout / setInterval
+// 01:23:38
 
-// 사과 : 100원
-// 키위 : 200원
-// 멜론 : 300원
-// 감귤 : 300원
-// 수박 : 500원
-// 그외 : 판매하지 않음
-
-let fruit = prompt("무슨 과일을 사고 싶나요?");
-
-switch(fruit) {
-    case '사과':
-        console.log("100원 입니다.");
-        break;
-    case '키위':
-        console.log("200원 입니다.");
-        break;
-    case '감귤':
-        console.log("300원 입니다.");
-    case '멜론':
-        console.log("300원 입니다.");
-        break;
-    case '수박':
-        console.log("500원 입니다.");
-        break;
-    default :
-        console.log("그런 과일은 판매하지 않습니다.");
+function fn() {
+    console.log(3);
 }
 
-
-
-let fruit = prompt("무슨 과일을 사고 싶나요?");
-
-switch(fruit) {
-    case '사과':
-        console.log("100원 입니다.");
-        break;
-    case '키위':
-        console.log("200원 입니다.");
-        break;
-    case '감귤':
-    case '멜론':
-        console.log("300원 입니다.");
-        break;
-    case '수박':
-        console.log("500원 입니다.");
-        break;
-    default :
-        console.log("그런 과일은 판매하지 않습니다.");
-}
-
-// ========================================================
-// 함수
-
-function sayHello(name) {
-    console.log(`Hello, ${name}`);
-}
-
-sayHello('Mike');
-
-
-function showError() {
-    console.log('Error!');
-}
-
-showError();
-
-
-function sayHello(name) {
-    const msg = `Hello, ${name}`;
-    console.log(msg);
-}
-
-sayHello('Mike');
-sayHello('Tom');
-sayHello('Jane');
-
-sayHello();     // "Hello, undefined"
-
-
-function sayHello2(name) {
-    let msg = "Hello";
-    if(name) {
-        msg = `Hello, ${name}`;
-    }
-    console.log(msg);
-}
-
-sayHello2();     // "Hello"
-sayHello2('Mike');
-
-function sayHello3(name) {
-    let msg = "Hello";
-    if(name) {
-        msg += ", " + name;
-    }
-    console.log(msg);
-}
-
-sayHello3();     // "Hello"
-sayHello3('Mike');
-
-
-// 전역변수 / 지역변수
-
-let msg = "welcome";
-console.log(msg);
-
-function sayHello(name) {
-    let msg = "Hello";
-    console.log(msg + ' ' + name);
-}
-
-sayHello('Mike');
-console.log(msg);
+setTimeout(fn, 3000);
 
 
 
-let name = 'Mike';
+setTimeout(function () {
+    console.log(3);
+}, 3000);
 
-function sayHello(name) {
+
+
+function showName(name) {
     console.log(name);
 }
 
-sayHello();         // undefined
-sayHello('Jane');   // Jane
+setTimeout(showName, 3000, 'Mike');
 
 
 
-function sayHello(name) {
-    let newName = name || 'friend'; // OR
-    let msg = `Hello, ${newName}`;
-    console.log(msg);
+function showName2(name) {
+    console.log(name);
 }
 
-sayHello();         // Hello, friend
-sayHello('Mike');   // Hello, Mike
+const timeID = setTimeout(showName2, 3000, 'Mike');
+
+clearTimeout(timeID);
 
 
 
-function sayHello(name = 'friend') {
-    let msg = `Hello, ${name}`;
-    console.log(msg);
+function showName3(name) {
+    console.log(name);
 }
 
-sayHello();         // Hello, friend
-sayHello('Mike');   // Hello, Mike
+const timeId2 = setInterval(showName3, 3000, 'Mike');
 
-// return
+clearInterval(timeID2);
 
-function add(num1, num2) {
-    return num1 + num2;
-}
 
-const result = add(2, 3);
-console.log(result);
+//
 
+let num = 0;
 
+function showTime() {
+  console.log(`접속하신지 ${num++} 가 지났습니다.`);
+  if (num > 5) {
+    clearInterval(timeID3);
+  }
+};
 
-function showError() {
-    console.log('Error!');
-}
-const result = showError();
-console.log(result);    // undefined
+const timeID3 = setInterval(showTime, 1000);
 
-
-function showError2() {
-    console.log('Error!');
-    return;
-}
-const result = showError2();
-console.log(result);    // undefined
-
-
-// ========================================================
-// 함수 선언문 vs 함수 표현식 vs 화살표 함수
-
-// 함수 선언문 : 어디서든 호출가능
-function sayHello() {
-    console.log('Hello');
-}
-sayHello();
-
-
-// 함수 표현식 : 코드에 도달하면 생성
-let sayHello = function() {
-    console.log('Hello');
-}
-sayHello();
-
-
-
-function add(num1, num2) {
-    return num1 + num2; 
-}
-console.log( add(1, 1) );
-
-let add2 = function(num1, num2) {
-    return num1 + num2; 
-}
-console.log( add2(1, 2) );
-
-// 화살표 함수
-let add3 = (num1, num2) => {
-    return num1 + num2; 
-}
-console.log( add3(1, 3) );
-
-let add4 = (num1, num2) => (
-    num1 + num2
-)
-console.log( add4(1, 4) );
-
-let add5 = (num1, num2) => num1 + num2;
-console.log( add5(1, 5) );
-
-let sayHello = name => `Hello, ${name}`;
-sayHello('Scott');
-
-
-let showError = () => {
-    console.log('error');
-}
-showError();
-
-let add6 = (num1, num2) => (
-    const result = num1 + num2;
-    return result;
-)
-console.log( add6(1, 6) );
-
-
-// ========================================================
-// Object
-
-const superman = {
-    name: 'clark',
-    age: 33,
-}
-
-// 접근
-console.log(superman.name);
-console.log(superman['age']);
-
-// 추가
-superman.gender = 'male';
-superman['hairColor'] = 'blue';
-
-console.log(superman.gender);
-console.log(superman.hairColor);
-console.log(superman['hairColor']);
-
-// 삭제
-delete superman.hairColor;
-console.log(superman.hairColor);    // undefined
-
-
-
-// 단축 프로퍼티
-
-const name = 'clerk';
-const age = 33;
-
-const superman = {
-    name: name,
-    age: age,
-    gender: 'male',
-}
-
-=>
-
-const name = 'clerk';
-const age = 33;
-
-const superman = {
-    name,
-    age,
-    gender: 'male',
-}
-
-
-// for .. in 반복문
-
-const superman = {
-    name: 'clark',
-    age: 30,
-}
-
-console.log(superman);
-
-console.log(superman.name);
-console.log(superman['age']);
-
-superman.hobby = 'baseball';
-console.log(superman);
-
-for (let key in superman) {
-    console.log("[" + key + "]");
-    console.log(superman[key]);
-}
-
-
-
-function makeObject(name, age) {
-    return {
-        name: name,
-        age: age,
-        hobby: 'football',
-    }
-}
-
-const Mike = makeObject('Mike', 25);
-console.log(Mike);
-
-
-function makeObject2(name, age) {
-    return {
-        name,
-        age,
-        hobby: 'football',
-    }
-}
-
-const Mike = makeObject2('Mike', 25);
-console.log(Mike);
-
-// 객체 in
-console.log('age' in Mike);         // true
-console.log('birthday' in Mike);    // false
-
-
-
-
-function isAdult(user) {
-    if (!('age' in user) || user.age < 20) {
-        return false;
-    } else {
-        return true;
-    }
-}
-
-const Mike = {
-    name: 'Mike',
-    age: 30
-}
-
-const Jane = {
-    name: 'Jane'
-}
-
-console.log(isAdult(Mike));
-console.log(isAdult(Jane));
-
-
-
-const Mike = {
-    name: 'Mike',
-    age: 30
-}
-
-for (let x in Mike) {
-    console.log("[" + x + "]");
-}
 
 
 
 // ========================================================
-// Object
+// call, apply, bind
+// 01:26:43
 
-const superman = {
-    name: 'clark',
-    age: 33,
-    fly: function() {
-        console.log("날아갑니다.")
-    },
-    fly2() {
-        console.log("날아갑니다.!!")
-    },
+// call, apply, bind
+// 함수 호출 방식과 관계없이 this 를 지정할 수 있음
+
+// call
+
+const mike = {
+  name: "Mike"
+};
+
+const tom = {
+  name: "Tom"
+};
+
+function showThisName() {
+  console.log(this.name);
+};
+
+console.log(showThisName());  // window.name = ""
+console.log(showThisName.call(mike));
+console.log(showThisName.call(tom));
+
+function update(birthYear, occupation) {
+  this.birthYear = birthYear;
+  this.occupation = occupation;
 }
 
-superman.fly();
-superman.fly2();
+update.call(mike, 1990, "singer");
+console.log(mike);
+
+update.call(tom, 2002, "teacher");
+console.log(tom);
 
 
+// apply
+
+const mike2 = {
+  name: "Mike"
+};
+
+const tom2 = {
+  name: "Tom"
+};
+
+function showThisName2() {
+  console.log(this.name);
+};
+
+function update(birthYear, occupation) {
+  this.birthYear = birthYear;
+  this.occupation = occupation;
+}
+
+// apply 는 매개변수를 배열로 전달
+update.apply(mike2, [1990, "singer"]);
+console.log(mike2);
+
+update.apply(tom2, [2002, "teacher"]);
+console.log(tom2);
+
+
+
+const nums = [3, 10, 1, 6, 4];
+
+const minNum = Math.min(...nums);
+const maxNum = Math.max(...nums);
+console.log(minNum);
+console.log(maxNum);
+
+const minNum2 = Math.min.apply(null, nums);
+const maxNum2 = Math.max.apply(null, nums);
+// const maxNum2 = Math.max.apply(null, [3, 10, 1, 6, 4]);
+console.log(minNum2);
+console.log(maxNum2);
+
+const minNum3 = Math.min.call(null, ...nums);
+const maxNum3 = Math.max.call(null, ...nums);
+// const maxNum3 = Math.max.call(null, 3, 10, 1, 6, 4);
+console.log(minNum3);
+console.log(maxNum3);
+
+
+
+
+// bind
+
+const mike5 = {
+  name: "Mike"
+};
+
+function update5(birthYear, occupation) {
+  this.birthYear = birthYear;
+  this.occupation = occupation;
+}
+
+const updateMike = update5.bind(mike5);
+console.log(mike5);
+
+updateMike(1980, "police");
+console.log(mike5);
+
+
+
+
+const user5 = {
+  name: "Mike",
+  showName: function() {
+    console.log(`hello, ${this.name}`);
+  },
+};
+
+console.log(user5.showName());
+
+let fn5 = user5.showName;
+fn5();
+
+fn5.call(user5);
+fn5.apply(user5);
+
+let boundFn = fn5.bind(user5);
+boundFn();
+
+
+
+// ========================================================
+// 상속, prototype
+// 01:33:40
 
 const user = {
-    name: 'Mike',
-    sayHello: function() {
-        console.log(`Hello, I am ${this.name}`);
-    },
-    sayHello2: function() {
-        console.log(`Hello, I am ${user.name}`);
-    },
-}
-
-console.log(user);
-user.sayHello();
-user.sayHello2();
-
-
-
-// 객체명 vs THIS
-
-let boy = {
-    name: "Mike",
-    showName: function() {
-        console.log(boy.name)
-    }
+  name: 'Mike'
 };
 
-let man = boy;
-man.name = "Tom";
-
-console.log(boy.name);
-
-man.showName();
-
-boy = null;
-
-man.showName();     // Cannot read properties of null (reading 'name') 
+console.log(user.name); // Mike
+console.log(user.hasOwnProperty('name')); // true
+console.log(user.hasOwnProperty('age'));  // false
 
 
-
-let boy2 = {
-    name: "Mike",
-    showName: function() {
-        console.log(this.name)
-    }
+const user2 = {
+  name: 'Mike',
+  hasOwnProperty: function() {
+    console.log('haha');
+  }
 };
 
-let man = boy2;
-man.name = "Tom";
-
-console.log(boy2.name);
-
-man.showName();
-
-boy2 = null;
-
-man.showName();     // Tom
+console.log(user2.hasOwnProperty());
 
 
+// =======================
 
-
-let boy3 = {
-    name: "Mike",
-    sayThis: function () {
-        console.log(this);
-    },
-    showName: function() {
-        console.log(this.name)
-    }
+const bmw = {
+  color: "red",
+  navigation: 1,
+  wheels: 4,
+  drive() {
+    console.log("drive...");
+  },
 };
 
-boy3.sayThis();
+const benz = {
+  color: "black",
+  wheels: 4,
+  drive() {
+    console.log("drive...");
+  },
+};
+
+const audi = {
+  color: "blue",
+  wheels: 4,
+  drive() {
+    console.log("drive...");
+  },
+};
+
+// =======================
+
+const car = {
+  wheels: 4,
+  drive() {
+    console.log("drive...");
+  },
+};
+
+const bmw2 = {
+  color: "red",
+  navigation: 1,
+};
+
+const benz2 = {
+  color: "black",
+};
+
+const audi2 = {
+  color: "blue",
+};
+
+bmw2.__proto__ = car;
+benz2.__proto__ = car;
+audi2.__proto__ = car;
+
+console.log(bmw2.color);
+console.log(bmw2.wheels);
+console.log(bmw2.drive());
+
+
+// =======================
+
+const car3 = {
+  wheels: 4,
+  drive() {
+    console.log("drive...");
+  },
+};
+
+const bmw3 = {
+  color: "red",
+  navigation: 1,
+};
+
+bmw3.__proto__ = car3;
+
+const x5 = {
+  color: "white",
+  name: "x5",
+};
+
+x5.__proto__ = bmw3;
+
+console.log(x5.color);
+console.log(x5.navigation);
+console.log(x5.wheels);
+console.log(x5.drive());
+
+for (p in x5) {
+  console.log(p);
+};
+
+console.log(Object.keys(x5)); // ["color","name"]
+console.log(Object.values(x5)); // ["white","x5"]
+
+for (p in x5) {
+  if (x5.hasOwnProperty(p)) {
+    console.log('[O] ', p);
+  } else {
+    console.log('[X] ', p);
+  }
+};
+
+
+
+// 생성자 함수
+
+const Bmw5 = function (color) {
+  this.color = color;
+  this.wheels = 4;
+  this.drive = function () {
+    console.log("drive...");
+  };
+};
+
+const b_x5 = new Bmw5("red");
+const b_z4 = new Bmw5("white");
+
+console.log(b_x5.color);
+
+
+
+// 생성자 함수 (2)
+
+const car6 = {
+  wheels: 4,
+  drive() {
+    console.log("drive...");
+  },
+};
+
+const Bmw6 = function (color) {
+  this.color = color;
+};
+
+const b6_x5 = new Bmw6("red");
+const b6_z4 = new Bmw6("white");
+
+b6_x5.__proto__ = car6;
+b6_z4.__proto__ = car6;
+
+console.log(b6_x5.color);
+console.log(b6_x5.wheels);
+
+
+
+// 생성자 함수 (3)
+
+const Bmw7 = function (color) {
+  this.color = color;
+};
+
+Bmw7.prototype.wheels = 4;
+Bmw7.prototype.drive = function () {
+    console.log("drive...");
+};
+
+const b7_x5 = new Bmw7("red");
+const b7_z4 = new Bmw7("white");
+
+console.log(b7_x5.color);
+console.log(b7_x5.wheels);
+
+
+
+// 생성자 함수 (4)
+
+const Bmw8 = function (color) {
+  this.color = color;
+};
+
+Bmw8.prototype.wheels = 4;
+Bmw8.prototype.drive = function () {
+    console.log("drive...");
+};
+Bmw8.prototype.navigation = 1;
+Bmw8.prototype.stop = function () {
+    console.log("STOP !!");
+};
+
+const b8_x5 = new Bmw8("red");
+const b8_z4 = new Bmw8("white");
+
+console.log(b8_x5.color);
+console.log(b8_x5.stop());
+
+
+console.log(b8_x5 instanceof Bmw8); // true
+console.log(b8_x5.constructor === Bmw8); // true
+
+
+
+// 생성자 함수 (5)
+
+const Bmw9 = function (color) {
+  this.color = color;
+};
+
+Bmw9.prototype = {
+  wheels: 4,
+  drive() {
+    console.log("drive...");
+  },
+  navigation: 1,
+  stop() {
+    console.log("STOP !!");
+  }
+};
+
+let b9_x5 = new Bmw9("red");
+let b9_z4 = new Bmw9("white");
+
+console.log(b9_x5.color);
+console.log(b9_z4.stop());
+
+
+console.log(b9_z4 instanceof Bmw9); // true
+console.log(b9_x5.constructor === Bmw9); // false
+
+
+
+Bmw9.prototype = {
+  constructor: Bmw9,  // <== 이렇게 명시해주는게 좋음
+  wheels: 4,
+  drive() {
+    console.log("drive...");
+  },
+  navigation: 1,
+  stop() {
+    console.log("STOP !!");
+  }
+};
+
+b9_x5 = new Bmw9("red");
+b9_z4 = new Bmw9("white");
+
+console.log(b9_x5.color);
+console.log(b9_z4.stop());
+
+console.log(b9_z4 instanceof Bmw9); // true
+console.log(b9_x5.constructor === Bmw9); // true
+
+
+
+// 색상을 맘대로 변경할 수 있는 문제점이 있음.
+// 이를 해결하기 위해 Closure 를 이용함
+
+const Bmw10 = function (color) {
+  this.color = color;
+};
+
+b10_x5 = new Bmw10("red");
+console.log(b10_x5.color);
+
+b10_x5.color = "black";
+console.log(b10_x5.color);
+
+const Bmw11 = function (color) {
+  const c = color;
+  this.getColor = function () {
+    console.log(c);
+  }
+};
+
+b11_x5 = new Bmw11("red");
+console.log(b11_x5.getColor());
 
 
 
 // ========================================================
-// Array
+// Class (ES6 에 추가된 개념)
+// 01:43:00
 
-let students = ['철수', '영희', '영수'];
-console.log(students[0]);
+const User = function (name, age) {
+  this.name = name;
+  this.age = age;
+  this.showName = function () {
+    console.log(this.name);
+  };
+};
 
-console.log(students.length);
-
-students[0] = '민정';
-console.log(students[0]);
+const mike = new User("Mike", 30);
+console.log(mike);
 
 
-let days = ['월', '화', '수', '목', '금', '토'];
-console.log(days);
-console.log(days.length);
-
-days.push('일');
-days.push('년');
-console.log(days);
-console.log(days.length);
-
-days.pop('년');
-console.log(days);
-console.log(days.length);
-
-for (let idx = 0; idx < days.length; idx++) {
-    console.log("[1]" + days[idx]);
+class User2 {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  
+  showName() {
+    console.log(this.name);
+  }
 }
 
-// for ... of ...
-for (let day of days) {
-    console.log("[2]" +day);
+const tom = new User2("Tom", 19);
+console.log(tom);
+
+
+const User3 = function (name, age) {
+  this.name = name;
+  this.age = age;
+  // this.showName = function () {
+  //   console.log(this.name);
+  // };
+};
+
+User3.prototype.showName = function () {
+  console.log(this.name);
+};
+
+const mike3 = new User3("Mike", 30);
+console.log(mike3);
+
+
+
+
+for (const p in mike3) {
+  console.log(p);
+}; // name, age, showName
+
+for (const p in tom) {
+  console.log(p);
+}; // name, age
+
+
+
+// 상속 extends
+
+class Car {
+  constructor(color) {
+    this.color = color;
+    this.wheels = 4;
+  }
+  drive() {
+    console.log("drive.");
+  }
+  stop() {
+    console.log("STOP !");
+  }
 }
+
+class Bmw extends Car {
+  park() {
+    console.log("Park");
+  }
+}
+
+const z4 = new Bmw("blue");
+
+console.log(z4);
+console.log(z4.stop());
+
+// 메소드 오버라이딩 (method overriding)
+
+class Bmw2 extends Car {
+  park() {
+    console.log("Park");
+  }
+  stop() {
+    console.log("OFF !");
+  }
+}
+
+const z4_2 = new Bmw2("blue");
+
+console.log(z4_2);
+console.log(z4_2.stop());
+
+
+
+class Bmw3 extends Car {
+  park() {
+    console.log("Park");
+  }
+  stop() {
+    super.stop();
+    console.log("OFF !");
+  }
+}
+
+const z4_3 = new Bmw3("blue");
+
+console.log(z4_3);
+console.log(z4_3.stop());
+
+
+// 생성자 오버라이딩 (overriding)
+
+class Car5 {
+  constructor(color) {
+    this.color = color;
+    this.wheels = 4;
+  }
+  drive() {
+    console.log("drive.");
+  }
+  stop() {
+    console.log("STOP !");
+  }
+}
+
+class Bmw5 extends Car5 {
+  constructor(color) {
+    super(color);
+    this.navigation = 1;
+  }
+  park() {
+    console.log("Park");
+  }
+}
+
+const b5_z4 = new Bmw5("blue");
+console.log(b5_z4.color);
+
+
+
+// ========================================================
+// Promise
+// 01:53:10
+
+const pr = new Promise((resolve, reject) => {
+  // code
+});
+
+
+const pr2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('OK!');
+  }, 3000);
+});
+
+
+const pr3 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    reject(new Error('error'));
+  }, 3000);
+});
+
+
+pr2.then(
+  function(result) {
+    console.log(result + '=> Go');
+  },
+  function(err) {
+    console.log(err + '=> Reorder');
+  }
+);
+
+pr2.then(
+  function(result) {
+    console.log(result + '=> Go');
+  }
+).catch(
+  function(err) {
+    console.log(err + '=> Reorder');
+  }
+);
+
+pr2.then(
+  function(result) {
+    console.log(result + '=> Go');
+  }
+).catch(
+  function(err) {
+    console.log(err + '=> Reorder');
+  }
+).finally(
+  function() {
+    console.log('End');
+  }
+);
+
+
+
+const pr5 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('OK!');
+    // reject(new Error("err..."));
+  }, 1000);
+});
+
+console.log("시작");
+
+pr5.then((result) => {
+  console.log(result);
+}).catch((err) => {
+  console.log(err);
+}).finally(() => {
+  console.log('End');
+});
+
+
+// callback 함수로 구현
+
+const f1 = (callback) => {
+  setTimeout(function () {
+    console.log("[callback] 1번 주문");
+    callback();
+  }, 1000);
+};
+
+const f2 = (callback) => {
+  setTimeout(function () {
+    console.log("[callback] 2번 주문");
+    callback();
+  }, 3000);
+};
+
+const f3 = (callback) => {
+  setTimeout(function () {
+    console.log("[callback] 3번 주문");
+    callback();
+  }, 2000);
+};
+
+console.log("[callback] 시작");
+
+f1(function() {
+  f2(function() {
+    f3(function() {
+      console.log('[callback] 끝');
+    })
+  })
+})
+
+
+// promise 로 구현
+
+const f11 = () => {
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      res("[Promise] 1번 주문");
+    }, 1000);
+  });
+};
+
+const f12 = (message) => {
+  console.log(message);
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      res("[Promise] 2번 주문");
+    }, 3000);
+  });
+};
+
+const f13 = (message) => {
+  console.log(message);
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      res("[Promise] 3번 주문");
+    }, 2000);
+  });
+};
+
+console.log("[Promise] 시작");
+
+// promise chaining
+f11()
+.then((res) => f12(res))
+.then((res) => f13(res))
+.then((res) => console.log(res))
+.catch(console.log)
+.finally(() => {
+  console.log("[Promise] 끝");
+});
+
+
+
+// promise 로 구현 (2)
+
+const f21 = () => {
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      res("[Promise-2] 1번 주문");
+    }, 1000);
+  });
+};
+
+const f22 = (message) => {
+  console.log(message);
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      rej("[Promise-2] 실패");
+    }, 3000);
+  });
+};
+
+const f23 = (message) => {
+  console.log(message);
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      res("[Promise-2] 3번 주문");
+    }, 2000);
+  });
+};
+
+console.log("[Promise-2] 시작");
+
+// promise chaining
+f21()
+.then((res) => f22(res))
+.then((res) => f23(res))
+.then((res) => console.log(res))
+.catch(console.log)
+.finally(() => {
+  console.log("[Promise-2] 끝");
+});
+
+
+
+// Promise.all
+// Promise.all( [f1(), f2(), f3()] )
+console.time("xxx");
+
+Promise.all( [f11(), f12(), f13()] ).then((res) => {
+  console.log(res);
+  console.timeEnd("xxx");
+});
+
+// ["[Promise] 1번 주문","[Promise] 2번 주문","[Promise] 3번 주문"]
+
+
+console.time("yyy");
+
+Promise.all( [f21(), f22(), f23()] ).then((res) => {
+  console.log(res);
+  console.timeEnd("yyy");
+});
+
+
+
+// Promise.race
+// Promise.race( [f1(), f2(), f3()] )
+console.time("xxx");
+Promise.race( [f11(), f12(), f13()] ).then((res) => {
+  console.log(res);
+  console.timeEnd("xxx");
+});
+
+
+
+// ========================================================
+// async, await
+// 02:05:40
+
+async function getName() {
+  return "Mike";
+}
+
+getName().then((name) => {
+  console.log(name);
+});
+
+
+
+async function getName2() {
+  return Promise.resolve("Tom");
+}
+
+getName2().then((name) => {
+  console.log(name);
+});
+
+
+
+async function getName3() {
+  // return Promise.resolve("Tom");
+  throw new Error("err..");
+}
+
+getName3()
+  .then((name) => {
+    console.log(name);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+
+// await
+
+function getName(name) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(name);
+    }, 1000);
+  });
+}
+
+async function showName() {
+  const result = await getName("Mike");
+  console.log(result);
+};
+
+console.log("시작");
+showName();
+
+
+
+
+const f11 = () => {
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      res("[Promise] 1번 주문");
+    }, 1000);
+  });
+};
+
+const f12 = (message) => {
+  console.log(message);
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      res("[Promise] 2번 주문");
+    }, 3000);
+  });
+};
+
+const f13 = (message) => {
+  console.log(message);
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      res("[Promise] 3번 주문");
+    }, 2000);
+  });
+};
+
+console.log("[Promise] 시작");
+
+// // promise chaining
+// f11()
+// .then((res) => f12(res))
+// .then((res) => f13(res))
+// .then((res) => console.log(res))
+// .catch(console.log)
+// .finally(() => {
+//   console.log("[Promise] 끝");
+// });
+
+async function order() {
+  const result1 = await f11();
+  const result2 = await f12(result1);
+  const result3 = await f13(result2);
+  
+  console.log(result3);
+  console.log("[Promise] 끝");
+}
+
+order();
+
+
+
+
+
+// promise 로 구현 (2)
+
+const f21 = () => {
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      res("[Promise-2] 1번 주문");
+    }, 1000);
+  });
+};
+
+const f22 = (message) => {
+  console.log(message);
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      rej(new Error("[Promise-2] Err..."));
+    }, 3000);
+  });
+};
+
+const f23 = (message) => {
+  console.log(message);
+  return new Promise((res, rej) => {
+    setTimeout(function () {
+      res("[Promise-2] 3번 주문");
+    }, 2000);
+  });
+};
+
+console.log("[Promise-2] 시작");
+
+async function order2() {
+  try {
+    const result1 = await f21();
+    const result2 = await f22(result1);
+    const result3 = await f23(result2);
+    console.log(result3);    
+
+  } catch (e) {
+    console.log(e);
+  
+  } finally {
+    console.log("[Promise] 끝");
+  }  
+}
+
+order2();
+
+
+async function order3() {
+  try {
+    const result = await Promise.all([f11(), f12(), f13()]);
+    console.log(result);    
+
+  } catch (e) {
+    console.log(e);
+  
+  } finally {
+    console.log("[Promise] 끝");
+  }  
+}
+
+order3();
+
+
+
+// ========================================================
+// Generator
+// 02:10:50
+
+// Generator : 함수의 실행을 중간에 멈췄다가 재개할 수 있는 기능
+
+// Generator : 함수의 실행을 중간에 멈췄다가 재개할 수 있는 기능
+//
+// next(), return(), throw()
+// iterable
+// - Symbol.iterator 메소드가 있음
+// - Symbol.iterator 메소드는 iterator 를 반환해야 함
+//
+// iterator
+// - next 메소드를 가짐
+// - next 메소드는 value 와 done 속성을 가진 객체를 반환함
+// - 작업이 끝나면, done 은 true 가 됨
+
+
+// function* fn() {
+//   yield 1;
+//   yield 2;
+//   yield 3;
+//   return "finish";
+// }
+
+// const a = fn();
+
+
+// function* fn2() {
+//   console.log(1);
+//   yield 100;
+  
+//   console.log(2);  
+//   yield 200;
+  
+//   console.log(3);
+//   console.log(4);
+//   yield 300;
+  
+//   return "finish1";
+// }
+
+// const a2 = fn2();
+// // a2.next();
+// // a2.next();
+// // a2.next();
+// // a2.next();
+
+
+// function* fn3() {
+//   console.log(1);
+//   yield 100;
+  
+//   console.log(2);  
+//   yield 200;
+  
+//   console.log(3);
+//   console.log(4);
+//   yield 300;
+  
+//   return "finish1";
+// }
+
+// const a3 = fn3();
+// // a3.next();
+// // a3.next();
+// // a3.return('END');
+// // a3.next();
+
+
+// function* fn4() {
+//   try {
+//     console.log(1);
+//     yield 100;
+
+//     console.log(2);  
+//     yield 200;
+
+//     console.log(3);
+//     console.log(4);
+//     yield 300;
+
+//     return "finish1";
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }
+
+// const a4 = fn4();
+// // a4.next();
+// // a4.next();
+// // a4.throw(new Error('err'));
+// // a4.next();
+
+
+// const arr = [1, 2, 3, 4, 5];
+
+// const it = arr[Symbol.iterator]();
+
+// // it.next();
+// // it.next();
+// // it.next();
+// // it.next();
+// // it.next();
+
+// for(let num of arr) {
+//   console.log(num);
+// }
+
+
+// function* fn10() {
+//   yield 4;
+//   yield 5;
+//   yield 6;
+// }
+
+// const a10 = fn10();
+
+// console.log(a10[Symbol.iterator]() === a10);  // true
+
+// for(let num of a10) {
+//   console.log(num);
+// }
+
+
+// function* fn20() {
+//   const num1 = yield "첫번째 숫자를 입력하세요";
+//   console.log(num1);
+  
+//   const num2 = yield "첫번째 숫자를 입력하세요";
+//   console.log(num2);
+  
+//   return num1 + num2;
+// }
+
+// const a20 = fn20();
+
+// // a20.next();
+// // a20.next(15);
+// // a20.next(25);
+
+
+// function* fn30() {
+//   let index = 0;
+//   while(true) {
+//     yield index++;
+//   }
+// }
+
+// const a30 = fn30();
+
+// // a30.next();
+// // a30.next();
+// // a30.next();
+// // a30.next();
+// // a30.next();
+
+
+
+function* gen1() {
+  yield "w";
+  yield "o";
+  yield "r";
+  yield "l";
+  yield "d";
+}
+
+function* gen2() {
+  yield "hello";
+  yield* gen1();
+  yield "!";
+}
+
+console.log(...gen2());
+
