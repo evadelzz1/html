@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DOM & Event</title>
+        <link href='http://fonts.googleapis.com/css?family=Changa+One|Open+Sans:400italic,700italic,400,700,800' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <h2>World</h2>
+
+        <h3>A</h3>
+        <p id="first">This is ID1</p>
+        <a href="https://www.google.com">Google</a>
+        
+        <h3>B</h3>
+        <p id="second">This is ID2</p>
+        <address href="https://www.amazon.com">Amazon</link>
+        
+        <h3>C</h3>
+        <p id="third">This is ID3</p>
+        <a href="https://www.Apple.com">Apple</a>
+        <p id="fourth">This is ID4</p>
+    </body>
+</html>
+
+<!--
+document.documentElement
+document.body
+document.head
+
+document.body.style;
+document.body.style.backgroundColor = "green";
+document.body.style.fontSize = "30px";
+document.body.style.opacity = 0.5;
+document.body.style.padding = '10px';
+
+const el = document.getElementById('first');
+el;
+
+const pList = document.getElementsByTagName('p');
+pList;
+
+for(p of pList) {
+    p.style.fontSize = '30px';
+    p.style.opacity = String(Math.random());
+}
+
+document.getElementsByClassName('link');
+document.querySelectorAll('.link');
+document.querySelectorAll('#first');
+
+document.querySelector('.link');
+
+document.querySelector('h3:nth-of-type(2)');
+document.querySelector('h3:nth-of-type(2)').style.color = 'red';
+
+const pList = document.querySelectorAll('p:nth-of-type(2n)');
+for(p of pList) {
+    p.style.backgroundColor = '#000';
+    p.style.color = '#fff';
+}
+
+pList[0];
+pList[1];
+pList.length;
+
+-->

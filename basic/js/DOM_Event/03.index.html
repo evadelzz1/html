@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DOM & Event</title>
+        <link href='http://fonts.googleapis.com/css?family=Changa+One|Open+Sans:400italic,700italic,400,700,800' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <h2>World</h2>
+
+        <ul id="color">
+            <li id="red">red</li>
+            <li id="blue">blue</li>
+            <li id="green">green</li>
+        </ul>
+    </body>
+</html>
+
+<!--
+https://www.youtube.com/watch?v=JNVKehkS0aI&list=PLZKTXPmaJk8JVQv3XSNF8yJMdsxbFrO3S&index=3
+
+const blue = document.getElementById('blue');
+undefined
+
+blue;
+<li id=​"blue">​…​</li>​
+
+blue.firstChild;
+"blue"
+
+blue.firstElementChild;
+null
+
+const blueTextNode = blue.firstChild;
+
+blueTextNode.nodeName;
+'#text'
+
+blueTextNode.nodeType;
+3
+
+blueTextNode.nodeValue;
+'blue'
+
+blueTextNode.nodeValue = '파랑';
+'파랑'
+
+
+====================================================
+
+const ul = document.getElementById('color');
+
+ul;
+<ul id=​"color">​…​</ul>​
+
+ul.nodeType;
+1
+
+ul.nodeName;
+'UL'
+
+ul.nodeValue;
+null
+
+ul.textContent;
+'\n            red\n            파랑\n            green\n        '
+
+ul.textContent = 'test';
+'test'
+
+ul.textContent = '<li>RED</li>';
+'<li>RED</li>'
+
+ul.innerHTML = '<li>RED</li>';
+'<li>RED</li>'
+
+ul.innerHTML = '<li>Red</li><li>Blue</li><li>Green</li>';
+'<li>Red</li><li>Blue</li><li>Green</li>'
+
+
+====================================================
+
+const newLi = document.createElement('li');
+
+newLi;
+
+newLi.innerHTML = 'Black';
+'Black'
+
+newLi;
+
+const ul = document.getElementById('color');
+
+ul.appendChild(newLi);
+
+
+====================================================
+
+const newLi2 = document.createElement('li');
+
+const newText = document.createTextNode('pink');
+
+newText
+"pink"
+
+newLi2.appendChild(newText);
+"pink"
+
+ul.appendChild(newLi2);
+
+====================================================
+
+// insertBefore
+
+const newLi3 = document.createElement('li');
+
+const textNode3 = document.createTextNode('White');
+
+newLi3.appendChild(textNode3);
+"White"
+
+newLi3;
+<li>White</li>​
+
+
+const red = document.getElementById('red');
+
+const ul = document.getElementById('color');
+
+ul.insertBefore(newLi3, red);
+<li>​…​</li>​
+
+ul.appendChild(red);
+
+ul.insertBefore(red, newLi3);
+
+====================================================
+
+const newBlack = newLi3.cloneNode();
+
+ul.appendChild(newBlack);
+<li>​…​</li>​
+
+const newBlack2 = newLi3.cloneNode(true);
+
+ul.appendChild(newBlack2);
+<li>​…​</li>​
+
+
+====================================================
+
+ul.removeChild(newBlack2);
+<li>​White​</li>​
+
+ul.removeChild(ul.firstElementChild);
+<li id=​"blue">​blue​</li>​
+
+ul.removeChild(ul.lastElementChild);
+<li>​</li>​
+
+====================================================
+
+-->

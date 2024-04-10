@@ -1,0 +1,33 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#list {
+    list-style-type: none;
+    padding: 20px;
+    background-color: orange;
+    border: 5px solid green;
+    width: 200px;
+}
+
+#item {
+    padding: 10px;
+    color: white;
+    margin: 5px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.on {
+    background-color: black;
+    color: white
+}

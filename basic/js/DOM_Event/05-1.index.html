@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DOM & Event</title>
+    </head>
+    <body>
+        <button onclick="alert('click')">Click</button>
+        <button onclick="sayHello()">Click2</button>
+        <button id="btn3">Click3</button>
+        <button id="btn4">Click4</button>
+        <button id="btn5">Click5</button>
+        <button id="btn6">Double Click</button>
+        <input id="txt" type="text" />
+        <input id="txt2" type="text" />
+
+        <script>
+            function sayHello() {
+                alert('Hello');
+            }
+
+            const el = document.getElementById("btn3");
+            el.onclick = sayHello;
+
+            const el2 = document.getElementById("btn4");
+            el2.addEventListener("click", sayHello);
+
+            const el3 = document.getElementById("btn5");
+            el3.addEventListener("click", () => {
+                alert("Hi");
+            });
+
+            const el4 = document.getElementById("btn6");
+            el4.addEventListener("dblclick", sayHello);
+
+            document.addEventListener("DOMContentLoaded", () => {
+                document.body.style.backgroundColor = "green";
+            });
+
+            const input = document.getElementById("txt");
+            input.addEventListener("keyup", () => {
+                console.log("key up");
+            });
+            input.addEventListener("focus", () => {
+                input.style.backgroundColor = "rgba(255, 0, 0, 0.2)";
+            });
+            input.addEventListener("blur", () => {
+                input.style.backgroundColor = null;
+            });
+
+            const input2 = document.getElementById("txt2");
+            input2.addEventListener("keyup", (event) => {
+                console.log(event);
+            });
+        </script>
+    </body>
+</html>
+
+<!--
+
+https://www.youtube.com/watch?v=J5EJija5-Sw&list=PLZKTXPmaJk8JVQv3XSNF8yJMdsxbFrO3S&index=5
+
+-->

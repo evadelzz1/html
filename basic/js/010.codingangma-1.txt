@@ -1,8 +1,9 @@
 // ========================================================
 // [코딩앙마] 자바스크립트 기초 강좌 : 100분 완성
 // youtube : https://www.youtube.com/watch?v=KF6t61yuPCY
-// https://codepen.io/
-
+// 연습사이트 : https://codepen.io/
+// 노트     : https://limdotori.tistory.com/217
+//           https://velog.io/@cgy1024/코딩앙마-js-기초-100분-강좌-정리1-변수
 
 // ========================================================
 name = "Mike";

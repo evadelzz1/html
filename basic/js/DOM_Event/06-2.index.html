@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DOM & Event</title>
+        <link href='./style.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div id="box">
+            <input id="txt" />
+        </div>
+
+        <div id="box2">
+            <input id="txt2" />
+        </div>
+
+        <script>
+            const box = document.getElementById("box");
+            const txt = document.getElementById("txt");
+            
+            document.body.addEventListener("focus", () => {
+                console.log("focus - 1.body");
+            });
+            box.addEventListener("focus", () => {
+                console.log("focus - 2.div");
+            })
+            txt.addEventListener("focus", () => {
+                console.log("focus - 3.input");
+            });
+
+            document.body.addEventListener("blur", () => {
+                console.log("blur - 1.body");
+            });
+            box.addEventListener("blur", () => {
+                console.log("blur - 2.div");
+            })
+            txt.addEventListener("blur", () => {
+                console.log("blur - 3.input");
+            });
+
+            // document.body.addEventListener("focusin", () => {
+            //     console.log("focusin - 1.body");
+            // });
+            // box.addEventListener("focusin", () => {
+            //     console.log("focusin - 2.div");
+            // })
+            // txt.addEventListener("focusin", () => {
+            //     console.log("focusin - 3.input");
+            // });
+            //
+            // document.body.addEventListener("focusout", () => {
+            //     console.log("focusout - 1.body");
+            // });
+            // box.addEventListener("focusout", () => {
+            //     console.log("focusout - 2.div");
+            // })
+            // txt.addEventListener("focusout", () => {
+            //     console.log("focusout - 3.input");
+            // });
+
+
+            // txt.addEventListener("focusin", (event) => {
+            //     event.stopPropagation();
+            //     console.log("focusin - 3.input");
+            // });
+            // txt.addEventListener("focusout", (event) => {
+            //     event.stopPropagation();
+            //     console.log("focusout - 3.input");
+            // });
+        </script>
+    </body>
+</html>
+
+<!--
+
+https://www.youtube.com/watch?v=beLituqpwl8&list=PLZKTXPmaJk8JVQv3XSNF8yJMdsxbFrO3S&index=6
+
+-->
+
+

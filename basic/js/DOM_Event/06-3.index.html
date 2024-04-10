@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DOM & Event</title>
+        <link href='./style.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div id="box" class="container">
+            <ul id="list">
+                <li id="red" class="on">Red</li>
+                <li id="blue">Blue</li>
+                <li id="green">Green</li>
+                <li id="pink"><a href="#"></a>Pink</a></li>
+                <li id="orange"><a href="#">Orange</a></li>
+            </ul>
+        </div>
+
+        <script>
+            const list = document.getElementById("list");
+            const colors = list.children;
+
+            function clickHandler(event) {
+                console.log("[target]", event.target.tagName, " : ", event.target);
+                console.log("[currentTarget]", event.currentTarget.tagName, " : ", event.currentTarget);
+
+                let target = event.target;
+                if (target.tagName === "A") {
+                    target = target.parentElement;
+                } else if (target === event.currentTarget) {
+                    return;
+                }
+
+                for (c of colors) {
+                    c.classList.remove("on");
+                }
+                target.classList.add("on");
+            };
+
+            // document.getElementById("red").addEventListener("click", clickHandler);
+            // document.getElementById("blue").addEventListener("click", clickHandler);
+            // document.getElementById("green").addEventListener("click", clickHandler);
+            // document.getElementById("pink").addEventListener("click", clickHandler);
+            document.getElementById("list").addEventListener("click", clickHandler);
+        </script>
+    </body>
+</html>
+
+<!--
+
+https://www.youtube.com/watch?v=beLituqpwl8&list=PLZKTXPmaJk8JVQv3XSNF8yJMdsxbFrO3S&index=6
+    
+-->
+

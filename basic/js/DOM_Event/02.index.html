@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DOM & Event</title>
+        <link href='http://fonts.googleapis.com/css?family=Changa+One|Open+Sans:400italic,700italic,400,700,800' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <h1>Welcome</h1>
+        <h2>World</h2>
+
+        <h3>A</h3>
+        <p id="first">This is ID1</p>
+        <a href="https://www.google.com">Google</a>
+        
+        <h3>B</h3>
+        <p id="second">This is ID2</p>
+        <address href="https://www.amazon.com">Amazon</link>
+        
+        <h3>C</h3>
+        <p>This is ID3</p>
+        <a href="https://www.Apple.com">Apple</a>
+        <p>This is ID4</p>
+
+        <ul id="color">
+            <li id="red">red</li>
+            <li id="blue">blue</li>
+            <li id="green">green</li>
+        </ul>
+    </body>
+</html>
+
+<!--
+https://www.youtube.com/watch?v=XGKdimCHzw8&list=PLZKTXPmaJk8JVQv3XSNF8yJMdsxbFrO3S&index=2
+
+const pList1 = document.querySelectorAll('p');
+const pList2 = document.getElementsByTagName('p');
+
+pList1;
+NodeList(4) [p#first, p#second, p#third, p#fourth]
+
+pList2;
+HTMLCollection(4) [p#first, p#second, p#third, p#fourth, first: p#first, second: p#second, third: p#third, fourth: p#fourth]
+
+const red = document.getElementById('red');
+red;
+    <li id=​"red">​…​</li>​
+red.parentNode;
+    <ul id=​"color">​…​</ul>​
+red.parentElement;
+    <ul id=​"color">​…​</ul>​
+document.documentElement;
+    <html lang=​"en">​<head>​…​</head>​<body>​…​</body>​</html>​
+document.documentElement.parentNode;
+    #document (http://127.0.0.1:5500/02.index.html)
+document.documentElement.parentElement;
+    null
+
+
+const ul = document.getElementById('color');
+ul.childNodes;
+    NodeList(7) [text, li#red, text, li#blue, text, li#green, text]
+ul.children;
+    HTMLCollection(3) [li#red, li#blue, li#green, red: li#red, blue: li#blue, green: li#green]
+
+
+ul.firstChild;
+ul.lastChild;
+ul.firstElementChild;
+ul.lastElementChild;
+
+const blue = document.getElementById('blue');
+blue.previousSibling;
+blue.nextSibling;
+blue.previousElementSibling;
+blue.nextElementSibling;
+
+-->

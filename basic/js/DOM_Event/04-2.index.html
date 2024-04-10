@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DOM & Event</title>
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+                border: 4px solid #000;
+            }
+            .bg-red {
+                background-color: #f00;
+            }
+            .bg-green {
+                background-color: #0f0;
+            }
+            .bg-blue {
+                background-color: #00f;
+            }
+            .txt-white {
+                color: #fff;
+            }
+            .txt-yellow {
+                color: #ff0;
+            }
+            .txt-pink {
+                color: pink
+            }
+        </style>
+    </head>
+    <body>
+        <div id="box">BOX</div>
+
+        <ul id="color" class=""box bg-red">
+            <li>Red</li>
+            <li>Green</li>
+            <li>Blue</li>
+        </ul>
+
+        <script>
+            const box = document.getElementById("box");
+            box.style.backgroundColor = "red";
+            box.style.color = "#fff";
+            box.style.width = "100px";
+            box.style.height = "100px";
+
+            box.style["margin-left"] = "30px";
+
+            box.style.border = "10px solid #000";
+
+            const color = document.getElementById("color");
+
+            color.onclick = function(e) {
+                const target = e.target;
+                if (target.tagName !== "LI") return;
+                target.classList.toggle("txt-pink");
+            };
+            
+        </script>
+    </body>
+</html>
+
+<!--
+https://www.youtube.com/watch?v=PTXab15jA9g&list=PLZKTXPmaJk8JVQv3XSNF8yJMdsxbFrO3S&index=4
+
+box.className;
+''
+
+box.className = 'bg-red';
+'bg-red'
+
+box.className = 'bg-blue';
+'bg-blue'
+
+box.className = 'txt-pink';
+'txt-pink'
+
+box.className = 'bg-blue txt-pink';
+'bg-blue txt-pink'
+
+
+====================================================
+
+box.classList;
+DOMTokenList [value: '']
+
+box.classList.add('txt-white');
+
+box.classList.remove('txt-white');
+
+box.classList.add('bg-green', 'txt-yellow');
+
+
+====================================================
+
+box.classList.replace('bg-red', 'bg-blue');
+
+setInterval(() => {
+    box.classList.toggle('bg-red');
+}, 1000);
+
+====================================================
+
+-->

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DOM & Event</title>
+        <link href='http://fonts.googleapis.com/css?family=Changa+One|Open+Sans:400italic,700italic,400,700,800' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="box">BOX</div>
+
+        <ul>
+            <li>Red</li>
+            <li>Green</li>
+            <li>Blue</li>
+        </ul>
+
+        <script>
+            const box = document.getElementById("box");
+            box.style.backgroundColor = "red";
+            box.style.color = "#fff";
+            box.style.width = "100px";
+            box.style.height = "100px";
+
+            box.style["margin-left"] = "30px";
+
+            box.style.border = "10px solid #000";
+        </script>
+    </body>
+</html>
+
+<!--
+https://www.youtube.com/watch?v=PTXab15jA9g&list=PLZKTXPmaJk8JVQv3XSNF8yJMdsxbFrO3S&index=4
+
+box.style;
+
+-->

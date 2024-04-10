@@ -2,8 +2,9 @@
 // [코딩앙마] 자바스크립트 중급 강좌 : 140분 완성
 // youtube : https://youtu.be/4_WLS9Lj6n4?si=Iyai7L_Oa4xWeQeG&t=1
 //           https://www.youtube.com/watch?v=ocGc-AmWSnQ&list=PLZKTXPmaJk8JZ2NAC538UzhY_UNqMdZB4
-// https://codepen.io/
-
+// 연습사이트 : https://codepen.io/
+// 노트     : https://heycoding.tistory.com/4
+//           https://velog.io/@cgy1024/코딩앙마-JS-중급-강좌-정리1
 
 // ========================================================
 var name = "Mike";
