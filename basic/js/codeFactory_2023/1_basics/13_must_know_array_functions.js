@@ -17,11 +17,13 @@ console.log(iveMembers.push('코드팩토리'));
 console.log(iveMembers);
 
 console.log('---------------_');
+
 // pop()
 console.log(iveMembers.pop());
 console.log(iveMembers);
 
 console.log('---------------_');
+
 // shift()
 console.log(iveMembers.shift());
 console.log(iveMembers);
@@ -33,8 +35,11 @@ console.log(iveMembers);
 console.log('---------------_');
 
 // splice()
-console.log(iveMembers.splice(0, 3))
+console.log(iveMembers.splice(0, 3));
 console.log(iveMembers);
+
+console.log('---------------_');
+
 
 iveMembers = [
     '안유진',
@@ -55,6 +60,8 @@ console.log(iveMembers);
 console.log(iveMembers.slice(0, 3));
 console.log(iveMembers);
 
+console.log('--------------');
+
 // spread operator
 let iveMembers2 = [
     ...iveMembers,
@@ -66,8 +73,8 @@ let iveMembers3 = [
 ];
 console.log(iveMembers3);
 
-
 console.log('--------------');
+
 let iveMembers4 = iveMembers;
 
 console.log(iveMembers4);
@@ -102,6 +109,8 @@ console.log(numbers);
 // 1) a를 b 보다 나중에 정렬하려면 (뒤에두려면) 0보다 큰 숫자를 반환
 // 2) a를 b 보다 먼저 정렬하려면 (앞에두려면) 0보다 작은 숫자를 반환
 // 3) 원래 순서를 그대로 두려면 0을 반환
+// numbers.sort((a, b) => {});
+
 numbers.sort((a, b) => {
     return a > b ? 1 : -1;
 });
@@ -110,8 +119,9 @@ console.log(numbers);
 numbers.sort((a, b) => a > b ? -1 : 1);
 console.log(numbers);
 
-// map()
 console.log('--------------');
+
+// map()
 console.log(iveMembers.map((x) => x));
 console.log(iveMembers.map((x) => `아이브: ${x}`));
 
@@ -124,18 +134,27 @@ console.log(iveMembers.map((x) => {
 }));
 console.log(iveMembers);
 
-// filter()
+console.log('--------------');
+
+// filter() : 배열의 모든 값 순환
 numbers = [1, 8, 7, 6, 3];
+
+// numbers.filter((x) => {}));
 
 console.log(numbers.filter((x) => x % 2 === 0));
 
-// find()
+// find() : 조건을 만족하는 첫번째 값까지만 순환
 console.log(numbers.find((x) => x % 2 === 0));
 
 // findIndex()
 console.log(numbers.findIndex((x) => x % 2 === 0));
 
+console.log('--------------');
+
+
 // reduce()
+numbers = [1, 8, 7, 6, 3];
+
 console.log(numbers.reduce((p, n) => p + n, 0));
 
 // reduce() 퀴즈

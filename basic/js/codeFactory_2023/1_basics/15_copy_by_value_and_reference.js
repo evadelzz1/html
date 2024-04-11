@@ -6,21 +6,25 @@
  * 2) 객체는 copy by reference다
  */
 let original = '안녕하세요';
-let clone = original;
+let clone = original;   // copy by value : primitive 값
 
 console.log(original);
 console.log(clone);
+
+console.log('--------------');
 
 clone += ' 안유진 입니다.';
-console.log('--------------');
+
 console.log(original);
 console.log(clone);
+
+console.log('--------------');
 
 let originalObj = {
     name: '안유진',
     group: '아이브',
 };
-let cloneObj = originalObj;
+let cloneObj = originalObj;  // copy by reference : object, array, ..
 
 console.log(originalObj);
 console.log(cloneObj);
@@ -28,21 +32,38 @@ console.log(cloneObj);
 console.log('----------');
 
 originalObj['group'] = '코드팩토리';
+
 console.log(originalObj);
 console.log(cloneObj);
 
+console.log('--------------');
+
+cloneObj['company'] = '드래곤컴퍼니';
+
+console.log(originalObj);
+console.log(cloneObj);
+
+console.log('--------------');
+
 console.log(originalObj === cloneObj);
 console.log(original === clone);
+
+console.log('--------------');
+
 
 originalObj = {
     name: '최지호',
     group: '코드팩토리',
 };
+
 cloneObj = {
     name: '최지호',
     group: '코드팩토리',
 };
+
 console.log(originalObj === cloneObj);
+
+console.log('--------------');
 
 const yuJin1 = {
     name: '안유진',
@@ -54,12 +75,11 @@ const yuJin3 = {
     group: '아이브',
 }
 
-// true
-console.log(yuJin1 === yuJin2);
-// false
-console.log(yuJin1 === yuJin3);
-// false
-console.log(yuJin2 === yuJin3);
+console.log(yuJin1 === yuJin2);     // true
+console.log(yuJin1 === yuJin3);     // false
+console.log(yuJin2 === yuJin3);     // false
+
+console.log('--------------');
 
 /**
  * Spread Operator
@@ -69,7 +89,9 @@ const yuJin4 = {
 };
 console.log(yuJin4);
 
-console.log(yuJin4 === yuJin3);
+console.log(yuJin4 === yuJin3);      // false
+
+console.log('--------------');
 
 const yuJin5 = {
     year: 2003,
@@ -89,9 +111,23 @@ const yuJin7 = {
 }
 console.log(yuJin7);
 
+console.log('--------------');
+
+
 const numbers = [1, 3, 5];
 const numbers2 = [
-    ...numbers,
     10,
 ];
 console.log(numbers2);
+
+const numbers3 = [
+    ...numbers,
+    10,
+];
+console.log(numbers3);
+
+const numbers4 = [
+    10,
+    ...numbers,
+];
+console.log(numbers4);

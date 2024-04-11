@@ -19,9 +19,12 @@ function calculate() {
     console.log((3 * 10 / 2 % 3).toString());
 }
 
-// calculate();
+calculate();
 
-function calculate(number) {
+console.log('---------------');
+
+
+function calculate2(number) {
     console.log((number * 10 / 2 % 3).toString());
 }
 
@@ -30,8 +33,10 @@ function calculate(number) {
  * 
  * 실제 입력하는 값은 argument라고 한다.
  */
-calculate(4);
-calculate(5);
+calculate2(4);
+calculate2(5);
+
+console.log('---------------');
 
 function multiply(x, y) {
     console.log(x * y);
@@ -39,18 +44,20 @@ function multiply(x, y) {
 
 multiply(2, 4);
 
-function multiply(x, y = 10) {
+function multiply2(x, y = 10) {
     console.log(x * y);
 }
 
-multiply(2, 4);
-multiply(2);
+multiply2(2, 4);
+multiply2(2);
+
+console.log('---------------');
 
 /**
  * 반환받기
  * return 받기
  */
-console.log('---------------');
+
 function multiply(x, y) {
     return x * y;
 }
@@ -60,6 +67,8 @@ console.log(result1);
 
 const result2 = multiply(4, 5);
 console.log(result2);
+
+console.log('---------------');
 
 /**
  * Arrow 함수
@@ -72,8 +81,13 @@ console.log(multiply2(3, 4));
 const multiply3 = (x, y) => x * y;
 console.log(multiply3(4, 5));
 
-const multiply4 = x => x * 2;
+const multiply4 = (x) => x * 2;
 console.log(multiply4(2));
+
+const multiply4_2 = x => x * 2;
+console.log(multiply4_2(2));
+
+console.log('---------------');
 
 const multiply5 = x => y => z => `x: ${x} y: ${y} z:${z}`;
 console.log(multiply5(2)(5)(7));
@@ -97,14 +111,25 @@ const multiplyThree = function (x, y, z) {
     return x * y * z;
 }
 
-console.log('-----------------');
 console.log(multiplyThree(4, 5, 6));
+
+console.log('-----------------');
+
+const multiplyAll2 = function (...arguments) {
+    const argObj = Object.values(arguments);
+    return argObj.reduce((a, b) => a * b, 1);
+}
+
+console.log(multiplyAll2(3, 4, 5, 6, 7, 8, 9, 10));
+
 
 const multiplyAll = function (...arguments) {
     return Object.values(arguments).reduce((a, b) => a * b, 1);
 }
 
 console.log(multiplyAll(3, 4, 5, 6, 7, 8, 9, 10));
+
+console.log('-----------------');
 
 // immediately invoked function
 (function(x, y){
